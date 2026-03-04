@@ -20,7 +20,7 @@ form.subheader("Enter Flower Measurement")
 
 sepal_length = form.number_input(
 
-		"sepal length (cm)",
+		"sepal_length (cm)",
 		min_value= 4.0,
 		max_value= 8.0,
 		value = 5.1	
@@ -29,7 +29,7 @@ sepal_length = form.number_input(
 
 petal_length = form.number_input(
 
-		"petal length (cm)",
+		"petal_length (cm)",
 		min_value= 1.0,
 		max_value= 7.0,
 		value = 5.0
@@ -38,7 +38,7 @@ petal_length = form.number_input(
 
 sepal_width = form.number_input(
 
-		"sepal width (cm)",
+		"sepal_width (cm)",
 		min_value= 1.0,
 		max_value= 4.5,
 		value = 4.0
@@ -47,7 +47,7 @@ sepal_width = form.number_input(
 
 petal_width = form.number_input(
 
-		"petal width (cm)",
+		"petal_width (cm)",
 		min_value= 0.1,
 		max_value= 2.5,
 		value = 0.2
@@ -61,10 +61,10 @@ submit_button = form.form_submit_button("Predict")
 if submit_button:
 	input_data = pd.DataFrame({
 
-		"sepal length (cm)": [sepal_length],
-		"sepal width (cm)" : [sepal_width],
-		"petal length (cm)" : [petal_length],
-		"petal width (cm)" : [petal_width]
+		"sepal_length (cm)": [sepal_length],
+		"sepal_width (cm)" : [sepal_width],
+		"petal_length (cm)" : [petal_length],
+		"petal_width (cm)" : [petal_width]
 
 		})
 	prediction = model.predict(input_data)
@@ -73,3 +73,4 @@ if submit_button:
 	st.subheader("Prediction Result")
 
 	st.success(f" Predicted species: {prediction[0]}")
+
