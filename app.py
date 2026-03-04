@@ -45,10 +45,15 @@ if submit_button:
     input_data =[[sepal_length, sepal_width, petal_length, petal_width]]
 
 
-    prediction = model.predict(input_data)
+prediction = model.predict(input_data)
+probabilities = model.predict_proba(input_data)
 
-    st.subheader("Prediction Result")
-    st.success(f"Predicted species: {prediction[0]}")
+st.subheader("Prediction Result")
+st.success(f"Prediction species: {prediction [0]}")
+
+st.subheader("Prediction probability")
+st.write(probabilities)
+
 
 
 
