@@ -4,9 +4,11 @@ import pandas as pd
 import joblib
 
 input_data = pd.DataFrame(
-    [[sepal_length, sepal_width, petal_length, petal_width]],
+    [[sl, sw, pl, pw]],
     columns=model.feature_names_in_
 )
+
+prediction = model.predict(input_data)
 
 prediction = model.predict(input_data)
 
@@ -80,6 +82,7 @@ if submit_button:
 	st.subheader("Prediction Result")
 
 	st.success(f" Predicted species: {prediction[0]}")
+
 
 
 
