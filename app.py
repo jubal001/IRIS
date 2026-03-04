@@ -1,12 +1,7 @@
-
 import streamlit as st 
 import pandas as pd
 import joblib
 
-input_data = pd.DataFrame(
-    [[sl, sw, pl, pw]],
-    columns=model.feature_names_in_
-)
 
 prediction = model.predict(input_data)
 
@@ -68,21 +63,13 @@ submit_button = form.form_submit_button("Predict")
 
 
 if submit_button:
-	input_data = pd.DataFrame({
+	input_data = [[sepal_length, sepal_width, petal_length, petal_width]]
 
-		"sepal_length (cm)": [sepal_length],
-		"sepal_width (cm)" : [sepal_width],
-		"petal_length (cm)" : [petal_length],
-		"petal_width (cm)" : [petal_width]
-
-		})
+		
 	prediction = model.predict(input_data)
 
 
 	st.subheader("Prediction Result")
 
 	st.success(f" Predicted species: {prediction[0]}")
-
-
-
 
