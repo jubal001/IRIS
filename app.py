@@ -4,7 +4,7 @@ import joblib
 
 model = joblib.load("rfiris.pkl")
 
-st.title("IRIS FLOWER CLASSIFICATION APPLICATION")
+st.title("🌷🌷IRIS FLOWER CLASSIFICATION APPLICATION 🌺🌺")
 st.write("Predict the species of an Iris Flower Using a Random Forest Model")
 
 with st.form("iris_form"):
@@ -53,6 +53,7 @@ st.success(f"Prediction species: {prediction [0]}")
 
 st.subheader("Prediction probability")
 st.write(probabilities)
+
 
 
 
