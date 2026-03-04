@@ -3,6 +3,12 @@ import streamlit as st
 import pandas as pd
 import joblib
 
+input_data = pd.DataFrame(
+    [[sepal_length, sepal_width, petal_length, petal_width]],
+    columns=model.feature_names_in_
+)
+
+prediction = model.predict(input_data)
 
 model = joblib.load("rfiris.pkl")
 
@@ -10,9 +16,10 @@ model = joblib.load("rfiris.pkl")
 
 st.title(" IRIS FLOWER CLASSIFICATION APPLICATION")
 
-
 st.write("Predict the species of an Iris Flower Using a Random Forest Model")
 
+st.write("Input columns:", input_data.columns.tolist())
+st.write("Model expects:", model.feature_names_in_)
 
 form = st.form("iris form")
 
@@ -20,7 +27,7 @@ form.subheader("Enter Flower Measurement")
 
 sepal_length = form.number_input(
 
-		"sepallength (cm)",
+		"sepal_length (cm)",
 		min_value= 4.0,
 		max_value= 8.0,
 		value = 5.1	
@@ -29,7 +36,7 @@ sepal_length = form.number_input(
 
 petal_length = form.number_input(
 
-		"petallength (cm)",
+		"petal_length (cm)",
 		min_value= 1.0,
 		max_value= 7.0,
 		value = 5.0
@@ -38,7 +45,7 @@ petal_length = form.number_input(
 
 sepal_width = form.number_input(
 
-		"sepalwidth (cm)",
+		"sepal_width (cm)",
 		min_value= 1.0,
 		max_value= 4.5,
 		value = 4.0
@@ -47,7 +54,7 @@ sepal_width = form.number_input(
 
 petal_width = form.number_input(
 
-		"petalwidth (cm)",
+		"petal_width (cm)",
 		min_value= 0.1,
 		max_value= 2.5,
 		value = 0.2
@@ -61,10 +68,10 @@ submit_button = form.form_submit_button("Predict")
 if submit_button:
 	input_data = pd.DataFrame({
 
-		"sepallength (cm)": [sepal_length],
-		"sepalwidth (cm)" : [sepal_width],
-		"petallength (cm)" : [petal_length],
-		"petalwidth (cm)" : [petal_width]
+		"sepal_length (cm)": [sepal_length],
+		"sepal_width (cm)" : [sepal_width],
+		"petal_length (cm)" : [petal_length],
+		"petal_width (cm)" : [petal_width]
 
 		})
 	prediction = model.predict(input_data)
@@ -73,5 +80,6 @@ if submit_button:
 	st.subheader("Prediction Result")
 
 	st.success(f" Predicted species: {prediction[0]}")
+
 
 
